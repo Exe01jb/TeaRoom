@@ -1,0 +1,21 @@
+{
+  "name": "private-chatroom-backend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "author": "Exe01jb (https://github.com/Exe01jb)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Exe01jb/TeaRoom.git"
+  },
+  "main": "server.js",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "helmet": "^8.0.0",
+    "socket.io": "^4.8.1"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "Private Chatroom",
+  "author": "Exe01jb",
+  "license": "MIT",
+  "description": "Client-side encrypted zero-persistence chat relay using browser Web Crypto and AES-256-GCM.",
+  "requestFramePermissions": ["microphone"]
+}

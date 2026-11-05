@@ -1,0 +1,22 @@
+{
+  "releaseId": "tearoom-rc-2026-11-05T05-37-52-753Z",
+  "generatedAt": "2026-11-05T05:37:52.753Z",
+  "gitCommit": "UNTRACKED_ARCHIVE",
+  "nodeVersion": "v24.21.0",
+  "platform": "win32-x64",
+  "artifacts": {
+    "LICENSE": "1e309ce1a84de2db4c465581107cc02f7b7a7474ca9fdf2760b1bddac7a9ffc1",
+    "package.json": "cbd5b7c8efc6a203e187270485eaf99847f766c4daa8caf44b7297f0ce8cf986",
+    "bun.lock": "83291dcfc923346ba13b7ddf1cad4961db3e9ffb08de3804c2ec102c153679e1",
+    "package-lock.json": "786d2d6ee3265aded5e2e3a4eb9ff7be07d96c05da4cac83e8065d4ab3fe1145",
+    "backend/server.js": "af8e15ae9bd1f79091fcc7dbdede3e459122d265b9a338068dded5cc5d89abf0",
+    "backend/sockets/chatHandler.js": "4cc80f1ffea9dd77a7169e072c5440457c1fc54bfeb8f1a5c7cc1b08609f2022",
+    "frontend/src/utils/crypto.js": "ddc6d7a2d7ffb077a27a9a6a5f8ff7aa1829e579a9f1467360c5bf2ad5304854",
+    "deploy/setup.sh": "7282373d62f0709925a2bcff61f4d35fb7ca1195a1ef3f0b22dda9e54b79a716",
+    "deploy/update.sh": "a7dcf369e4d5c24b98b6aeafcd332ac54f9884920af5737cf13e0a49debcceda",
+    "deploy/uninstall.sh": "e93259647409a4a669dd59b847ca5fd9b7ab2ba7faa1b9c00573afd8dfa8d937",
+    "dist/assets/index-7GTgaLwU.css": "2e9f61b42b8f1a357dcf817a633cb524608906eabd5c21de8573791092d990ca",
+    "dist/assets/index-AfEZD3HV.js": "11ce09c6b70555c1f8d7534ce25d0b0e9665f247904f19bd0901f21a9cba2e17",
+    "dist/index.html": "298d7705bebe334a7ee1430411d1ebc04e022b8038a80aa24e5e496dbb1f4dd0"
+  }
+}

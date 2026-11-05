@@ -1,0 +1,75 @@
+name: TeaRoom CI & Release Verification
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Lint, Typecheck, Test, Build & Security Gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22 LTS
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dependencies cleanly
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install
+          fi
+
+      - name: Run AST & security linter
+        run: npm run lint
+
+      - name: Run TypeScript typecheck
+        run: npm run typecheck
+
+      - name: Run unit, crypto & integration test suite
+        run: npm test
+
+      - name: Verify Backup & Restore DR procedure
+        run: node scripts/verify-backup-restore.mjs
+
+      - name: Build production frontend bundle
+        run: npm run build
+
+      - name: Scan compiled dist/ bundle for accidental secret leakage
+        run: |
+          if grep -rnE "ADMIN_SECRET|admin-secret-dev-key" dist/; then
+            echo "FATAL: Sensitive secret identifier found in compiled frontend bundle!"
+            exit 1
+          fi
+
+      - name: Validate deployment shell scripts (LF line endings & bash -n)
+        run: |
+          if grep -U $'\r' deploy/*.sh; then
+            echo "ERROR: CRLF line endings detected in deploy/*.sh"
+            exit 1
+          fi
+          bash -n deploy/setup.sh
+          bash -n deploy/update.sh
+          bash -n deploy/uninstall.sh
+
+      - name: Generate reproducible release manifest
+        run: node scripts/generate-release-manifest.mjs
+
+      - name: Upload release manifest artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-manifest
+          path: release-manifest.json
+          retention-days: 30

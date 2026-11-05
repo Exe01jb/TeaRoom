@@ -1,0 +1,282 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  color-scheme: dark light;
+}
+
+html.dark body {
+  background-color: #09090b;
+  color: #f4f4f5;
+}
+
+html.light body {
+  background: linear-gradient(135deg, #a7c6bf 0%, #b8d4ce 50%, #abc8c1 100%);
+  color: #18181b;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background 250ms ease, background-color 250ms ease, color 250ms ease;
+}
+
+/* Fluid Animation Keyframes */
+@keyframes bubbleEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes waveBarPulse {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1.4);
+  }
+}
+
+@keyframes typingBlink {
+  0%, 80%, 100% {
+    opacity: 0.3;
+    transform: translateY(0);
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}
+
+.animate-bubble {
+  animation: bubbleEntrance 240ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-left {
+  animation: slideInFromLeft 260ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Custom Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: rgba(82, 82, 91, 0.5);
+  border-radius: 9999px;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(113, 113, 122, 0.8);
+}
+
+html.light ::-webkit-scrollbar-thumb {
+  background: rgba(161, 161, 170, 0.4);
+  border-radius: 9999px;
+}
+
+html.light ::-webkit-scrollbar-thumb:hover {
+  background: rgba(161, 161, 170, 0.7);
+}
+
+/* ==========================================================================
+   3D Immersion & Modern Tactile Effects
+   ========================================================================== */
+
+/* 3D Depth Canvas & Perspective */
+.perspective-container {
+  perspective: 1200px;
+}
+
+/* 3D Card Depth & Specular Sheen */
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 300ms ease;
+  box-shadow: 
+    0 1px 1px 0 rgba(255, 255, 255, 0.08) inset,
+    0 8px 24px -4px rgba(0, 0, 0, 0.25),
+    0 3px 8px -2px rgba(0, 0, 0, 0.15);
+}
+
+html.light .card-3d {
+  box-shadow: 
+    0 1px 1px 0 rgba(255, 255, 255, 0.8) inset,
+    0 10px 25px -4px rgba(28, 45, 40, 0.12),
+    0 4px 10px -2px rgba(28, 45, 40, 0.08);
+}
+
+.card-3d-interactive:hover {
+  transform: perspective(1000px) translateY(-3px) translateZ(8px) rotateX(1deg);
+  box-shadow: 
+    0 1px 2px 0 rgba(255, 255, 255, 0.15) inset,
+    0 18px 36px -6px rgba(0, 0, 0, 0.35),
+    0 8px 16px -4px rgba(0, 0, 0, 0.2);
+}
+
+html.light .card-3d-interactive:hover {
+  box-shadow: 
+    0 1px 2px 0 rgba(255, 255, 255, 0.9) inset,
+    0 18px 34px -6px rgba(28, 45, 40, 0.16),
+    0 8px 16px -4px rgba(28, 45, 40, 0.1);
+}
+
+/* 3D Tactile Buttons */
+.btn-3d {
+  position: relative;
+  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 
+    0 1px 0 rgba(255, 255, 255, 0.15) inset,
+    0 4px 12px -2px rgba(0, 0, 0, 0.28),
+    0 2px 4px -1px rgba(0, 0, 0, 0.16);
+}
+
+.btn-3d:hover {
+  transform: translateY(-1.5px) scale(1.02);
+  box-shadow: 
+    0 1px 0 rgba(255, 255, 255, 0.25) inset,
+    0 8px 18px -3px rgba(0, 0, 0, 0.36),
+    0 4px 8px -2px rgba(0, 0, 0, 0.2);
+}
+
+.btn-3d:active {
+  transform: translateY(1.5px) scale(0.97);
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.4) inset,
+    0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+/* 3D Top Button Pulse & Glow */
+.top-button-3d {
+  transform-style: preserve-3d;
+  transition: all 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 
+    0 1px 1px rgba(255, 255, 255, 0.3) inset,
+    0 0 0 1px rgba(16, 185, 129, 0.2),
+    0 8px 20px -3px rgba(0, 0, 0, 0.4);
+}
+
+.top-button-3d:hover {
+  transform: perspective(600px) translateY(-2px) scale(1.06) rotateZ(3deg);
+  box-shadow: 
+    0 1px 2px rgba(255, 255, 255, 0.4) inset,
+    0 0 14px 2px rgba(16, 185, 129, 0.4),
+    0 12px 26px -4px rgba(0, 0, 0, 0.5);
+}
+
+.top-button-3d:active {
+  transform: perspective(600px) translateY(2px) scale(0.95);
+}
+
+/* Cascading Reveal Animation for Sub-Buttons */
+@keyframes cascadeReveal {
+  0% {
+    opacity: 0;
+    transform: perspective(600px) rotateX(-24deg) translateY(-16px) scale(0.82);
+    filter: blur(4px);
+  }
+  60% {
+    opacity: 0.95;
+    transform: perspective(600px) rotateX(4deg) translateY(2px) scale(1.04);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(600px) rotateX(0deg) translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.animate-cascade-reveal {
+  animation: cascadeReveal 380ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  transform-origin: top center;
+}
+
+@keyframes cascadeCollapse {
+  0% {
+    opacity: 1;
+    transform: perspective(600px) rotateX(0deg) translateY(0) scale(1);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    transform: perspective(600px) rotateX(-20deg) translateY(-12px) scale(0.85);
+    filter: blur(3px);
+  }
+}
+
+.animate-cascade-collapse {
+  animation: cascadeCollapse 250ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform-origin: top center;
+}
+
+/* Modern 3D Chat Bubbles */
+.bubble-3d-sent {
+  box-shadow: 
+    0 1px 1px 0 rgba(255, 255, 255, 0.8) inset,
+    0 6px 18px -4px rgba(0, 0, 0, 0.08),
+    0 2px 6px -1px rgba(0, 0, 0, 0.04);
+}
+
+html.dark .bubble-3d-sent {
+  box-shadow: 
+    0 1px 1px 0 rgba(255, 255, 255, 0.12) inset,
+    0 8px 22px -4px rgba(0, 0, 0, 0.4),
+    0 3px 8px -2px rgba(0, 0, 0, 0.25);
+}
+
+.bubble-3d-received {
+  box-shadow: 
+    0 1px 1px 0 rgba(255, 255, 255, 0.1) inset,
+    0 8px 24px -4px rgba(0, 0, 0, 0.35),
+    0 3px 8px -1px rgba(0, 0, 0, 0.2);
+}
+
+/* Corner Registration Crosshairs */
+.hud-corner {
+  position: relative;
+}
+.hud-corner::before,
+.hud-corner::after {
+  content: "+";
+  position: absolute;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace;
+  font-size: 11px;
+  line-height: 1;
+  color: rgba(16, 185, 129, 0.5);
+  pointer-events: none;
+}
+.hud-corner::before {
+  top: 10px;
+  left: 12px;
+}
+.hud-corner::after {
+  top: 10px;
+  right: 12px;
+}
+
+
