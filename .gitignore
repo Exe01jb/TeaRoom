@@ -17,5 +17,6 @@ Thumbs.db
 *.tar.gz
 *.tgz
 *.tar
-.env*
+.env
+.env.*
 !.env.example
